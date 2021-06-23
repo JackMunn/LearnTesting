@@ -1,0 +1,19 @@
+{
+  "name": "learn-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JackMunn/LearnTesting.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JackMunn/LearnTesting/issues"
+  },
+  "homepage": "https://github.com/JackMunn/LearnTesting#readme"
+}
