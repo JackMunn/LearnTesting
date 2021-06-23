@@ -18,5 +18,6 @@
   "description": "",
   "dependencies": {
     "dayjs": "^1.10.5"
-  }
+  },
+  "video": false
 }
