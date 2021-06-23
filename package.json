@@ -15,5 +15,8 @@
     "url": "https://github.com/JackMunn/LearnTesting/issues"
   },
   "homepage": "https://github.com/JackMunn/LearnTesting#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "dayjs": "^1.10.5"
+  }
 }
