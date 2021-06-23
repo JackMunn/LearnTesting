@@ -1,0 +1,8 @@
+cypress/videos/.DS_Store
+cypress/videos/QuickQuoteQuestions/DLN.test.js.mp4
+cypress/videos/QuickQuoteQuestions/DriversPostcode.test.js.mp4
+cypress/videos/QuickQuoteQuestions/Email.test.js.mp4
+cypress/videos/QuickQuoteQuestions/FirstName.test.js.mp4
+cypress/videos/QuickQuoteQuestions/PageLevelErrors.test.js.mp4
+cypress/videos/QuickQuoteQuestions/SecondName.test.js.mp4
+cypress/videos/QuickQuoteQuestions/SubscriptionStart.test.js.mp4
