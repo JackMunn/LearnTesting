@@ -85,3 +85,43 @@ Cypress.Commands.add('prefillQuickQuoteQuestions', (firstName,surname,email,star
         cy.wait(5000)
         //click continue
 })
+
+Cypress.Commands.add('prefillQuickQuoteConfirmation', () => {
+  // checks we're on the quick quote page, which doesn't help differentiate it from the preceding page - but will at least check if the quote was declined
+   cy.url().should('include','Public/QuickQuote')
+   cy.contains('Confirm all the info above is correct')
+   // clicks confirmation radio button
+   cy.get('[value="19663"]').click()
+   cy.wait(5000)
+   // page will automatically progress to prequote question, so this checks it did
+      
+ })
+
+ Cypress.Commands.add('prefillPreQuoteQuestions', (ownerRelationship, confirmAlternativeInsurance) => {
+  // ownerRelationship should be 'Parents', 'Partner', 'Family', 'Friend', 'Colleague', 'Other'
+  // confirmAlternativeInsurance should be 'Yes' or 'No'
+
+  cy.url().should('include','/PreQuoteQuestions')
+
+  // clicks no to ownership of the car
+  cy.get('[class="radio-inline instanda-question-yes-no-parent-no instanda-unselected"]').click()
+  // selects parents relationships
+  cy.get('select[name="OwnerRelationship_TXT"]').select(ownerRelationship)
+  // selects insurance already in place
+  cy.get('select[name="VehicleInsurance_TXT"]').select(confirmAlternativeInsurance)
+
+ })
+
+ Cypress.Commands.add('prefillQuote', ( ) => {
+  cy.url().should('include','/Quote')
+  // your fine quote for Veygo Learn. It might be worth some regulatory checks and pricing. As it includes T&Cs and premium.
+  // also car info and policy start dates
+
+ })
+
+ Cypress.Commands.add('prefillPostQuote', ( ) => {
+  cy.url().should('include','/Public/PostQuoteQuestions')
+
+  cy.get('select[name="BillingTitle"]').select('Mr')
+
+ })
