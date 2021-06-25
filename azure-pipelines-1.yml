@@ -4,13 +4,13 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 
-  
+  trigger:
+    - main
 
  
 jobs:
   job: Job_1
-    trigger:
-    - main
+  
 
     pool:
       vmImage: ubuntu-latest
