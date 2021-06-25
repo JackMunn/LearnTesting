@@ -1,8 +1,21 @@
 version: 2.1
 orbs:
   cypress: cypress-io/cypress@1
+
 workflows:
-  build:
+  version: 2
+  commit:
     jobs:
       - cypress/run
-      
+  nightly:
+    triggers:
+      - schedule:
+          cron: '0 8,9,10,11,12,13,14,15,16 * * 1-5'
+          filters:
+            branches:
+              only:
+                - main
+    jobs:
+      - cypress/run
+
+ 
