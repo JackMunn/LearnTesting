@@ -2,7 +2,7 @@ version: 2.1
 orbs:
   node: circleci/node@4.5.1
   cypress: cypress-io/cypress@1
-  slack: circleci/slack@4.0
+  slack: circleci/slack@4.4.2
 
           
 jobs:
@@ -15,7 +15,7 @@ jobs:
           template: basic_fail_1
       - slack/notify:
           event: pass
-          template: bsuccess_tagged_deploy_1
+          template: success_tagged_deploy_1
 
 workflows:
   version: 2
@@ -24,7 +24,7 @@ workflows:
       - cypress/run
       - notify:
           context: slack-secrets
-  fifteen-min-workflow:
+  thirty-min-workflow:
     triggers:
       - schedule:
           cron: "0,30 * * * *"
