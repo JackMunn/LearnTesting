@@ -17,5 +17,8 @@ daytime hourly tests:
                 - main
     jobs:
       - cypress/run
+      - store_test_results:
+          path: test-results
+      
 
  
