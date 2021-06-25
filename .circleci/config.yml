@@ -1,7 +1,7 @@
 version: 2.1
 orbs:
   node: circleci/node@4.5.1
-  cypress: cypress-io/cypress@1
+  cypress: cypress-io/cypress@1.28.0
   slack: circleci/slack@4.4.2
 
           
@@ -26,7 +26,10 @@ workflows:
   version: 2
   commit-workflow:
     jobs:
-      - cypress/run
+      - cypress/run:
+          record: true
+          store_artifacts: true
+
       - notify:
           context: slack-secrets
   thirty-min-workflow:
