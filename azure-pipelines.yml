@@ -9,7 +9,6 @@ trigger:
 jobs:
 - job: Job_1
   displayName: Pre-reqs
-  pool:
   steps:
   - checkout: self
   - task: DeleteFiles@1
@@ -32,8 +31,6 @@ jobs:
   dependsOn: Job_1
   condition: succeeded()
   displayName: Run-Cypress-Tests
-  pool:
-    name: Default
   steps:
   - checkout: none
   - task: CmdLine@2
@@ -56,8 +53,6 @@ jobs:
   dependsOn: Job_2
   condition: eq(dependencies.Job_2.result,'SucceededWithIssues')
   displayName: Publish-Screens-on-Fail
-  pool:
-    name: Default
   steps:
   - checkout: none
   - task: PublishBuildArtifacts@1
