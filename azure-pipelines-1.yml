@@ -3,27 +3,34 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
-trigger:
-- main
 
-pool:
-  vmImage: ubuntu-latest
-
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
-
-- script: |
-    npm install
-    npm run build
-  displayName: 'npm install and build'
   
 
  
 jobs:
-- job: Job_1
+  job: Job_1
+    trigger:
+    - main
+
+    pool:
+      vmImage: ubuntu-latest
+
+    steps:
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '10.x'
+      displayName: 'Install Node.js'
+
+    - script: |
+        npm install
+        npm run build
+      displayName: 'npm install and build'
+
+
+
+
+
+- job: Job_2
   displayName: Pre-reqs
   pool:
     name: Default
@@ -44,8 +51,8 @@ jobs:
       script: npx cypress verify
  
  
-- job: Job_2
-  dependsOn: Job_1
+- job: Job_3
+  dependsOn: Job_2
   condition: succeeded()
   displayName: Run-Cypress-Tests
   pool:
@@ -68,8 +75,8 @@ jobs:
       testRunTitle: Cypress Test Results
  
  
-- job: Job_3
-  dependsOn: Job_2
+- job: Job_4
+  dependsOn: Job_3
   condition: eq(dependencies.Job_2.result,'SucceededWithIssues')
   displayName: Publish-Screens-on-Fail
   pool:
