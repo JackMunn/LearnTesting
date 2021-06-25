@@ -3,15 +3,26 @@ orbs:
   node: circleci/node@4.5.1
   cypress: cypress-io/cypress@1
   slack: circleci/slack@4.0
-  
 
+          
+jobs:
+  notify:
+    executor:
+      name: node/default
+    steps:
+      - slack/notify:
+          channel: General
+          event: fail
+          template: basic_fail_1
 
 workflows:
   version: 2
   commit-workflow:
     jobs:
       - cypress/run
-  fifteen-min:
+      - notify:
+          context: slack-secrets
+  fifteen-min-workflow:
     triggers:
       - schedule:
           cron: "0,15,30,45 * * * *"
@@ -21,6 +32,7 @@ workflows:
                 - main
     jobs:
       - cypress/run
+      - notify
 
 
 
