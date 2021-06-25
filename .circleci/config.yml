@@ -21,13 +21,6 @@ daytime every 30 mins tests:
             branches:
               only:
                 - main
-    jobs:
-      - cypress/run
-      - slack/notify:
-          channel: General
-          event: fail
-          template: basic_fail_1
 
-      
 
  
