@@ -3,24 +3,28 @@ orbs:
   node: circleci/node@4.5.1
   cypress: cypress-io/cypress@1
   slack: circleci/slack@4.0
-
+  
 
 
 workflows:
   version: 2
-  commit:
+  commit-workflow:
     jobs:
       - cypress/run
-     
-
-daytime every 30 mins tests:
+  fifteen-min:
     triggers:
       - schedule:
-          cron: '0,30 8,9,10,11,12,13,14,15,16 * * 1-7'
+          cron: "0,15,30,45 * * * *"
           filters:
             branches:
               only:
                 - main
+    jobs:
+      - cypress/run
+
+
+
+
 
 
  
