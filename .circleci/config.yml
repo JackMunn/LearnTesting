@@ -35,7 +35,7 @@ workflows:
   thirty-min-workflow:
     triggers:
       - schedule:
-          cron: "0,30 * * * *"
+          cron: "0 7,9,11,13,15,17,19 * * 1,2,3,4,5"
           filters:
             branches:
               only:
