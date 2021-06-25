@@ -10,7 +10,6 @@ jobs:
 - job: Job_1
   displayName: Pre-reqs
   pool:
-    vmImage: 'ubuntu-latest'
   steps:
   - checkout: self
   - task: DeleteFiles@1
