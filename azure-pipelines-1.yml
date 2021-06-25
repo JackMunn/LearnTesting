@@ -4,13 +4,6 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 
-  trigger:
-    - main
-
- 
-jobs:
-  job: Job_1
-  
 
     pool:
       vmImage: ubuntu-latest
@@ -28,72 +21,3 @@ jobs:
 
 
 
-
-
-- job: Job_2
-  displayName: Pre-reqs
-  pool:
-    name: Default
-  steps:
-  - checkout: self
-  - task: DeleteFiles@1
-    displayName: Delete old results
-    inputs:
-      SourceFolder: $(System.DefaultWorkingDirectory)/cypress/results/
-      Contents: '*.*'
-  - task: Npm@1
-    displayName: npm install
-    inputs:
-      verbose: false
-  - task: CmdLine@2
-    displayName: Check Cypress Installed
-    inputs:
-      script: npx cypress verify
- 
- 
-- job: Job_3
-  dependsOn: Job_2
-  condition: succeeded()
-  displayName: Run-Cypress-Tests
-  pool:
-    name: Default
-  steps:
-  - checkout: none
-  - task: CmdLine@2
-    displayName: Run-Tests
-    continueOnError: True
-    inputs:
-      workingDirectory: $(System.DefaultWorkingDirectory)
-      script: npm run record
-  - task: PublishTestResults@2
-    displayName: Publish JUnit Test Results
-    condition: succeededOrFailed()
-    inputs:
-      testResultsFiles: '*.xml'
-      searchFolder: $(System.DefaultWorkingDirectory)/cypress/results
-      mergeTestResults: true
-      testRunTitle: Cypress Test Results
- 
- 
-- job: Job_4
-  dependsOn: Job_3
-  condition: eq(dependencies.Job_2.result,'SucceededWithIssues')
-  displayName: Publish-Screens-on-Fail
-  pool:
-    name: Default
-  steps:
-  - checkout: none
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish Artifact: screenshots'
-    condition: succeededOrFailed()
-    continueOnError: True
-    inputs:
-      PathtoPublish: $(System.DefaultWorkingDirectory)/cypress/screenshots
-      ArtifactName: screenshots
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish Artifact: videos'
-    condition: succeededOrFailed()
-    continueOnError: True
-    inputs:
-      PathtoPublish: $(System.DefaultWorkingDirectory)/cypress/videos
-      ArtifactName: video
