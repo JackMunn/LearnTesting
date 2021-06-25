@@ -1,4 +1,6 @@
 {
-    "projectId": "ouohhv",
-    "chromeWebSecurity": false 
+  "chromeWebSecurity": false,
+  "video": true,
+  "videoUploadOnPasses": true,
+  "projectId": "x2qyww"
 }
