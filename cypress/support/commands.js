@@ -125,3 +125,43 @@ Cypress.Commands.add('prefillQuickQuoteConfirmation', () => {
   cy.get('select[name="BillingTitle"]').select('Mr')
 
  })
+
+ Cypress.Commands.add('addStripeDetails', () => {
+        // I have no real idea what this is, but I copied it from stack overflow and it works... :shifty:
+
+  describe('Make Stripe Payment', () => {
+
+      cy.wait(6000)
+      cy.get('iframe').then($iframe => {
+        const doc = $iframe.contents()
+        let input = doc.find('input')[0]
+        cy
+          .wrap(input)
+          .type('4242')
+          .type('4242')
+          .type('4242')
+          .type('4242')
+        input = doc.find('input')[1]
+        cy
+          .wrap(input)
+          .clear()
+          .type('12')
+          .type('22')
+        input = doc.find('input')[2]
+        cy
+          .wrap(input)
+          .type('123')
+          .type('{enter}')
+
+          let button = doc.find('button')[1]
+
+          cy
+            .wrap(button).click()
+            // .type('{enter}')
+
+      })
+      cy.wait(15000)
+      cy.url().should('include','/Public/Confirmation')
+
+  })
+})
