@@ -11,11 +11,16 @@ jobs:
       name: node/default
     steps:
       - slack/notify:
+          channel: general
           event: fail
           template: basic_fail_1
+          mentions: '@JackMunn'
       - slack/notify:
+          channel: general
           event: pass
           template: success_tagged_deploy_1
+          mentions: '@JackMunn'
+
 
 workflows:
   version: 2
