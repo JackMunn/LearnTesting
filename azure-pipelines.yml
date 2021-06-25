@@ -10,7 +10,7 @@ jobs:
 - job: Job_1
   displayName: Pre-reqs
   pool:
-    name: Default
+    name: Jack Munn
   steps:
   - checkout: self
   - task: DeleteFiles@1
