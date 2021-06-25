@@ -1,5 +1,6 @@
 version: 2.1
 orbs:
+  node: circleci/node@4.5.1
   cypress: cypress-io/cypress@1
   slack: circleci/slack@4.0
 
@@ -10,6 +11,11 @@ workflows:
   commit:
     jobs:
       - cypress/run
+send-notification:
+    jobs:
+      - notify:
+          context: slack-secrets
+
 
 daytime hourly tests:
     triggers:
@@ -22,6 +28,7 @@ daytime hourly tests:
     jobs:
       - cypress/run
       - slack/notify:
+          channel: General
           event: fail
           template: basic_fail_1
 
