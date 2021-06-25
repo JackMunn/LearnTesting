@@ -10,6 +10,7 @@ workflows:
   commit:
     jobs:
       - cypress/run
+
 daytime hourly tests:
     triggers:
       - schedule:
@@ -20,6 +21,9 @@ daytime hourly tests:
                 - main
     jobs:
       - cypress/run
+      - slack/notify:
+          event: fail
+          template: basic_fail_1
 
       
 
