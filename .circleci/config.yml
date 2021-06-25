@@ -11,9 +11,11 @@ jobs:
       name: node/default
     steps:
       - slack/notify:
-          channel: General
-          event: always
+          event: fail
           template: basic_fail_1
+      - slack/notify:
+          event: pass
+          template: bsuccess_tagged_deploy_1
 
 workflows:
   version: 2
@@ -25,7 +27,7 @@ workflows:
   fifteen-min-workflow:
     triggers:
       - schedule:
-          cron: "0,15,30,45 * * * *"
+          cron: "0,30 * * * *"
           filters:
             branches:
               only:
