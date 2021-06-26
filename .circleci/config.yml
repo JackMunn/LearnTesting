@@ -9,8 +9,7 @@ jobs:
     executor:
       name: node/default
     steps:
-      - cypress/install
-      - run: npx cypress run --record
+      - run: cypress/run
       - slack/notify:
           channel: general
           event: fail
