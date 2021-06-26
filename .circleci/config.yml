@@ -9,6 +9,7 @@ jobs:
     executor:
       name: node/default
     steps:
+      - run: npx cypress run --record
       - slack/notify:
           channel: general
           event: fail
@@ -29,8 +30,6 @@ workflows:
           record: true
           store_artifacts: true
       - notify:
-          requires: 
-            - cypress/run
           context: slack-secrets
   thirty-min-workflow:
     triggers:
