@@ -44,6 +44,26 @@ workflows:
     #             - main
     jobs:
       - cypress/run:
+          name: Whats the drivers first name?
+          spec: cypress/integration/QuickQuoteQuestions/FirstName.test.js
+          record: true
+          store_artifacts: true              
+      - cypress/run:
+          name: Whats the drivers surname?
+          spec: cypress/integration/QuickQuoteQuestions/SecondName.test.js
+          record: true
+          store_artifacts: true              
+      - cypress/run:
+          name: Whats the drivers email?
+          spec: cypress/integration/QuickQuoteQuestions/Email.test.js
+          record: true
+          store_artifacts: true  
+      - cypress/run:
+          name: When do you want the subscription to start?
+          spec: cypress/integration/QuickQuoteQuestions/SubscriptionStart.test.js
+          record: true
+          store_artifacts: true  
+      - cypress/run:
           name: Please enter the drivers driving licence number 
           spec: cypress/integration/QuickQuoteQuestions/DLN.test.js
           record: true
@@ -53,8 +73,4 @@ workflows:
           spec: cypress/integration/QuickQuoteQuestions/DriversPostcode.test.js
           record: true
           store_artifacts: true  
-      
-
-
-
  
