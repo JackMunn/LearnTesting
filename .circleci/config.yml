@@ -4,36 +4,15 @@ orbs:
   cypress: cypress-io/cypress@1.28.0
   slack: circleci/slack@4.4.2
 
-          
-jobs:
-  notify:
-    executor:
-      name: node/default
-    steps:
-      - slack/notify:
-          channel: general
-          event: fail
-          template: basic_fail_1
-          mentions: '@JackMunn'
-      - slack/notify:
-          channel: general
-          event: pass
-          template: success_tagged_deploy_1
-          mentions: '@JackMunn'
-  test:
-    executor:
-      name: node/default
-    steps:
-      - run:
-         command: "cypress"
-     
-
 
 workflows:
   version: 2
   commit-workflow:
     jobs:
-      - test
+      - cypress/run:
+          record: true
+          store_artifacts: true
+
       - notify:
           context: slack-secrets
   thirty-min-workflow:
@@ -52,6 +31,21 @@ workflows:
           context: slack-secrets
 
 
+jobs:
+  notify:
+    executor:
+      name: node/default
+    steps:
+      - slack/notify:
+          channel: general
+          event: fail
+          template: basic_fail_1
+          mentions: '@JackMunn'
+      - slack/notify:
+          channel: general
+          event: pass
+          template: success_tagged_deploy_1
+          mentions: '@JackMunn'
 
 
 
