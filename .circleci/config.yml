@@ -29,7 +29,7 @@ workflows:
           name: Smoke tests only
           record: true
           store_artifacts: true  
-          spec: cypress/integration/E2E
+          spec: cypress/integration/E2E/*
 
           
       # - notify:
