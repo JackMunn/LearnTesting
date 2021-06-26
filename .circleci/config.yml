@@ -26,7 +26,7 @@ workflows:
   commit-workflow:
     jobs:
       - cypress/run:
-          name: Smoke tests only
+          name: Smoke Tests
           record: true
           store_artifacts: true  
           spec: cypress/integration/E2E/*
@@ -35,6 +35,11 @@ workflows:
                 channel: general
                 event: fail
                 template: basic_fail_1
+                mentions: '@JackMunn'
+            - slack/notify:
+                channel: general
+                event: pass
+                template: basic_success_1
                 mentions: '@JackMunn'                      
 
           
@@ -53,30 +58,66 @@ workflows:
           name: Whats the drivers first name?
           spec: cypress/integration/QuickQuoteQuestions/FirstName.test.js
           record: true
-          store_artifacts: true              
+          store_artifacts: true    
+          post-steps:
+            - slack/notify:
+                channel: general
+                event: fail
+                template: basic_fail_1
+                mentions: '@JackMunn'          
       - cypress/run:
           name: Whats the drivers surname?
           spec: cypress/integration/QuickQuoteQuestions/SecondName.test.js
           record: true
-          store_artifacts: true              
+          store_artifacts: true
+          post-steps:
+            - slack/notify:
+                channel: general
+                event: fail
+                template: basic_fail_1
+                mentions: '@JackMunn'              
       - cypress/run:
           name: Whats the drivers email?
           spec: cypress/integration/QuickQuoteQuestions/Email.test.js
           record: true
           store_artifacts: true  
+          post-steps:
+            - slack/notify:
+                channel: general
+                event: fail
+                template: basic_fail_1
+                mentions: '@JackMunn'
       - cypress/run:
           name: When do you want the subscription to start?
           spec: cypress/integration/QuickQuoteQuestions/SubscriptionStart.test.js
           record: true
           store_artifacts: true  
+          post-steps:
+            - slack/notify:
+                channel: general
+                event: fail
+                template: basic_fail_1
+                mentions: '@JackMunn'
       - cypress/run:
           name: Please enter the drivers driving licence number 
           spec: cypress/integration/QuickQuoteQuestions/DLN.test.js
           record: true
-          store_artifacts: true  
+          store_artifacts: true 
+          post-steps:
+            - slack/notify:
+                channel: general
+                event: fail
+                template: basic_fail_1
+                mentions: '@JackMunn' 
       - cypress/run:
           name: Please enter the drivers postcode
           spec: cypress/integration/QuickQuoteQuestions/DriversPostcode.test.js
           record: true
-          store_artifacts: true  
+          store_artifacts: true 
+          post-steps:
+            - slack/notify:
+                channel: general
+                event: fail
+                template: basic_fail_1
+                mentions: '@JackMunn' 
  
