@@ -9,7 +9,8 @@ jobs:
     executor:
       name: node/default
     steps:
-      - run: cypress/run
+      - run: 
+          command: cypress/run
       - slack/notify:
           channel: general
           event: fail
@@ -26,9 +27,6 @@ workflows:
   version: 2
   commit-workflow:
     jobs:
-      - cypress/run:
-          record: true
-          store_artifacts: true
       - notify:
           context: slack-secrets
   thirty-min-workflow:
