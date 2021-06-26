@@ -34,7 +34,7 @@ workflows:
           
       # - notify:
       #     context: slack-secrets
-  thirty-min-workflow:
+  hourly-workflow:
     triggers:
       - schedule:
           cron: "0 7,9,11,13,15,17,19 * * 1,2,3,4,5"
@@ -44,9 +44,16 @@ workflows:
                 - main
     jobs:
       - cypress/run:
-          name: all tests
+          name: Please enter the drivers driving licence number 
+          spec: cypress/integration/QuickQuoteQuestions/DLN.test.js
           record: true
-          store_artifacts: true          
+          store_artifacts: true  
+      - cypress/run:
+          name: Please enter the drivers postcode
+          spec: cypress/integration/QuickQuoteQuestions/DriversPostcode.test.js
+          record: true
+          store_artifacts: true  
+      
       # - notify:
       #     context: slack-secrets
 
