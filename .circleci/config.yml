@@ -20,16 +20,20 @@ jobs:
           event: pass
           template: success_tagged_deploy_1
           mentions: '@JackMunn'
+  test:
+    executor:
+      name: node/default
+    steps:
+      - run:
+         command: "cypress"
+     
 
 
 workflows:
   version: 2
   commit-workflow:
     jobs:
-      - cypress/run:
-          record: true
-          store_artifacts: true
-
+      - test
       - notify:
           context: slack-secrets
   thirty-min-workflow:
