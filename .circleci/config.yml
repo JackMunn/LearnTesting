@@ -26,8 +26,12 @@ workflows:
   commit-workflow:
     jobs:
       - cypress/run:
+          name: Smoke tests only
           record: true
           store_artifacts: true  
+          spec: cypress/integration/E2E
+
+          
       # - notify:
       #     context: slack-secrets
   thirty-min-workflow:
@@ -40,6 +44,7 @@ workflows:
                 - main
     jobs:
       - cypress/run:
+          name: all tests
           record: true
           store_artifacts: true          
       # - notify:
