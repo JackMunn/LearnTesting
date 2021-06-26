@@ -35,13 +35,13 @@ workflows:
       # - notify:
       #     context: slack-secrets
   thirty-min-workflow:
-    # triggers:
-    #   - schedule:
-    #       cron: "0 7,9,11,13,15,17,19 * * 1,2,3,4,5"
-    #       filters:
-    #         branches:
-    #           only:
-    #             - main
+    triggers:
+      - schedule:
+          cron: "0 7,9,11,13,15,17,19 * * 1,2,3,4,5"
+          filters:
+            branches:
+              only:
+                - main
     jobs:
       - cypress/run:
           name: Whats the drivers first name?
