@@ -30,6 +30,8 @@ workflows:
           record: true
           store_artifacts: true  
           spec: cypress/integration/E2E/*
+          parallel: true # split all specs across machines
+          parallelism: 4 # use 4 CircleCI machines to finish quickly
           post-steps:
             - store_test_results:
                 path: test-results
@@ -61,6 +63,8 @@ workflows:
           record: true
           store_artifacts: true  
           spec: cypress/integration/E2E/*
+          parallel: true # split all specs across machines
+          parallelism: 4 # use 4 CircleCI machines to finish quickly
           post-steps:
             - store_test_results:
                 path: test-results
@@ -75,69 +79,17 @@ workflows:
                 template: basic_success_1
                 mentions: '@Jack Munn'  
       - cypress/run:
-          name: Whats the drivers first name?
-          spec: cypress/integration/QuickQuoteQuestions/FirstName.test.js
+          name: Functional Tests in Quick Qupte Questions
+          spec: cypress/integration/QuickQuoteQuestions/*
           record: true
           store_artifacts: true    
+          parallel: true # split all specs across machines
+          parallelism: 4 # use 4 CircleCI machines to finish quickly
           post-steps:
             - slack/notify:
                 channel: general
                 event: fail
                 template: basic_fail_1
                 mentions: '@Jack Munn'          
-      - cypress/run:
-          name: Whats the drivers surname?
-          spec: cypress/integration/QuickQuoteQuestions/SecondName.test.js
-          record: true
-          store_artifacts: true
-          post-steps:
-            - slack/notify:
-                channel: general
-                event: fail
-                template: basic_fail_1
-                mentions: '@Jack Munn'              
-      - cypress/run:
-          name: Whats the drivers email?
-          spec: cypress/integration/QuickQuoteQuestions/Email.test.js
-          record: true
-          store_artifacts: true  
-          post-steps:
-            - slack/notify:
-                channel: general
-                event: fail
-                template: basic_fail_1
-                mentions: '@Jack Munn'
-      - cypress/run:
-          name: When do you want the subscription to start?
-          spec: cypress/integration/QuickQuoteQuestions/SubscriptionStart.test.js
-          record: true
-          store_artifacts: true  
-          post-steps:
-            - slack/notify:
-                channel: general
-                event: fail
-                template: basic_fail_1
-                mentions: '@Jack Munn'
-      - cypress/run:
-          name: Please enter the drivers driving licence number 
-          spec: cypress/integration/QuickQuoteQuestions/DLN.test.js
-          record: true
-          store_artifacts: true 
-          post-steps:
-            - slack/notify:
-                channel: general
-                event: fail
-                template: basic_fail_1
-                mentions: '@Jack Munn' 
-      - cypress/run:
-          name: Please enter the drivers postcode
-          spec: cypress/integration/QuickQuoteQuestions/DriversPostcode.test.js
-          record: true
-          store_artifacts: true 
-          post-steps:
-            - slack/notify:
-                channel: general
-                event: fail
-                template: basic_fail_1
-                mentions: '@Jack Munn' 
+
  
