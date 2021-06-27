@@ -25,8 +25,13 @@ workflows:
   version: 2
   commit-workflow:
     jobs:
+      - cypress/install: 
+          name: Install dependencies
+
       - cypress/run:
           name: Smoke Tests
+          requires:
+            - Install dependencies
           record: true
           store_artifacts: true  
           spec: cypress/integration/E2E/*
