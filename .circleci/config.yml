@@ -47,7 +47,7 @@ workflows:
           
       # - notify:
       #     context: slack-secrets
-  thirty-min-workflow:
+  every-other-hour-workflow:
     triggers:
       - schedule:
           cron: "0 7,9,11,13,15,17,19 * * 1,2,3,4,5"
@@ -56,6 +56,24 @@ workflows:
               only:
                 - main
     jobs:
+      - cypress/run:
+          name: Smoke Tests
+          record: true
+          store_artifacts: true  
+          spec: cypress/integration/E2E/*
+          post-steps:
+            - store_test_results:
+                path: test-results
+            - slack/notify:
+                channel: general
+                event: fail
+                template: basic_fail_1
+                mentions: '@Jack Munn'
+            - slack/notify:
+                channel: general
+                event: pass
+                template: basic_success_1
+                mentions: '@Jack Munn'  
       - cypress/run:
           name: Whats the drivers first name?
           spec: cypress/integration/QuickQuoteQuestions/FirstName.test.js
