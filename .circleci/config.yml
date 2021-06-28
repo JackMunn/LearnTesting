@@ -13,12 +13,12 @@ orbs:
 #           channel: general
 #           event: fail
 #           template: basic_fail_1
-#           mentions: '@JackMunn'
+#           mentions: '@Jack Munn'
 #       - slack/notify:
 #           channel: general
 #           event: pass
 #           template: success_tagged_deploy_1
-#           mentions: '@JackMunn'
+#           mentions: '@Jack Munn'
 
 
 workflows:
@@ -26,26 +26,75 @@ workflows:
   commit-workflow:
     jobs:
       - cypress/run:
+          name: Smoke Tests
           record: true
           store_artifacts: true  
-      # - notify:
-      #     context: slack-secrets
-  thirty-min-workflow:
+          spec: cypress/integration/E2E/*
+          post-steps:
+            - store_test_results:
+                path: test-results
+            - slack/notify:
+                channel: general
+                event: fail
+                template: basic_fail_1
+                mentions: '@Jack Munn'
+            - slack/notify:
+                channel: general
+                event: pass
+                template: basic_success_1
+                mentions: '@Jack Munn'                      
+
+  functionaltests-once-a-day-workflow:
     triggers:
       - schedule:
-          cron: "0 7,9,11,13,15,17,19 * * 1,2,3,4,5"
+          cron: "0 7,8,9,11,13,15,17,19 * * 1,2,3,4,5"
           filters:
             branches:
               only:
                 - main
     jobs:
       - cypress/run:
+          name: Smoke Tests
           record: true
-          store_artifacts: true          
-      # - notify:
-      #     context: slack-secrets
-
-
-
+          store_artifacts: true  
+          spec: cypress/integration/E2E/*
+          post-steps:
+            - store_test_results:
+                path: test-results
+            - slack/notify:
+                channel: general
+                event: fail
+                template: basic_fail_1
+                mentions: '@Jack Munn'
+            - slack/notify:
+                channel: general
+                event: pass
+                template: basic_success_1
+                mentions: '@Jack Munn'  
+  smoke-every-hour-workflow:
+    triggers:
+      - schedule:
+          cron: "0 8,13 * * 1,2,3,4,5"
+          filters:
+            branches:
+              only:
+                - main
+    jobs:
+      - cypress/run:
+          name: Functional Tests in Quick Quote Questions
+          spec: cypress/integration/QuickQuoteQuestions/*
+          record: true
+          store_artifacts: true    
+          post-steps:
+            - slack/notify:
+                channel: general
+                event: fail
+                template: basic_fail_1
+                mentions: '@Jack Munn'    
+            - slack/notify:
+                channel: general
+                event: pass
+                template: basic_success_1
+                mentions: '@Jack Munn'                 
 
  
