@@ -30,7 +30,7 @@ it('#9220  MyLicence decision should return pass when a provision licence is ent
     
     //clicks continue and checks if the customer is seeing the right page
     cy.get('[formaction="QuickQuoteQuestionsContinue"]').click()
-    cy.url().should('include','/Public/QuickQuote')
+    cy.contains('Your Quote').should('exist')
 })
 
 it('#9222  DLN decision should return fail if a provisional licence has expired (BJNMW311118B99ED)', () => {
