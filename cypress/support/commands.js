@@ -92,7 +92,7 @@ Cypress.Commands.add('prefillQuickQuoteConfirmation', () => {
    cy.contains('Confirm all the info above is correct')
    // clicks confirmation radio button
    cy.get('[value="19663"]').click()
-   cy.wait(10000)
+   cy.wait(20000)
    // page will automatically progress to prequote question, so this checks it did
       
  })
