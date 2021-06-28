@@ -44,7 +44,7 @@ workflows:
                 template: basic_success_1
                 mentions: '@Jack Munn'                      
 
-  every-other-hour-workflow:
+  functionaltests-once-a-day-workflow:
     triggers:
       - schedule:
           cron: "0 7,8,9,11,13,15,17,19 * * 1,2,3,4,5"
@@ -71,6 +71,15 @@ workflows:
                 event: pass
                 template: basic_success_1
                 mentions: '@Jack Munn'  
+  smoke-every-hour-workflow:
+    triggers:
+      - schedule:
+          cron: "0 8,13 * * 1,2,3,4,5"
+          filters:
+            branches:
+              only:
+                - main
+    jobs:
       - cypress/run:
           name: Functional Tests in Quick Quote Questions
           spec: cypress/integration/QuickQuoteQuestions/*
