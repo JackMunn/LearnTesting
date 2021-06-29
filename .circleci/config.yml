@@ -45,9 +45,8 @@ workflows:
                 event: pass
                 template: basic_success_1
                 mentions: '@Jack Munn'   
-      - percy/finalize_all:
-          requires:
-            - Smoke Tests   
+            - percy/finalize_all
+
 
   Scheduled-Smoke-Tests:
     triggers:
