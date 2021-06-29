@@ -51,6 +51,7 @@ beforeEach(() => {
 
 
 Cypress.Commands.add('prefillQuickQuoteQuestions', (firstName,surname,email,startDate,dln,postcode,dob,phoneNumber,carReg) => {
+        cy.percySnapshot('Empty Quote on Quick Quote')
  //types first name in
         cy.get('input#DriverFirstName_TXT').type(firstName)
         // types last name ins
@@ -83,6 +84,8 @@ Cypress.Commands.add('prefillQuickQuoteQuestions', (firstName,surname,email,star
         cy.get('input#VehicleReg').type(carReg)
         cy.get('[class="instanda-buttonList form-group"] > button').click()
         cy.wait(5000)
+        cy.percySnapshot('Completed Quote on Quick Quote')
+
         //click continue
 })
 
