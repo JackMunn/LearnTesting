@@ -23,13 +23,13 @@ describe('Happy Path 1',  () => {
 
         cy.prefillPostQuote()
 
-        cy.get('[formaction="PostQuoteQuestionsContinue"]').click()
+        // cy.get('[formaction="PostQuoteQuestionsContinue"]').click()
 
-        cy.get('input#boltPayButton').click()
+        // cy.get('input#boltPayButton').click()
 
-        cy.addStripeDetails()
+        // cy.addStripeDetails()
     
-        cy.log('Journey completed successfully')
+        // cy.log('Journey completed successfully')
 
 
    
