@@ -45,7 +45,8 @@ workflows:
                 channel: general
                 event: pass
                 template: basic_success_1
-                mentions: '@Jack Munn'                      
+                mentions: '@Jack Munn'   
+      - percy/finalize_all           
 
   Scheduled-Smoke-Tests:
     triggers:
