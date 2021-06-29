@@ -6,7 +6,10 @@ describe('Happy Path 1',  () => {
 
     it('Customer can fill in a basic quote', () => {
         //pre-fill a quote
+        cy.percySnapshot('Empty Quote on Quick Quote')
         cy.prefillQuickQuoteQuestions('Jack','Munn','jackmunn@gmail.com',Cypress.todaysDate,'ABHKZ660047N99LP','CF64 5RL','11/05/1988','01234567890','CV53JBZ')
+        cy.percySnapshot('Full Quote on Quick Quote')
+
         //click continue
         cy.get('[formaction="QuickQuoteQuestionsContinue"]').click()
         // confirms the info is correct from 'your quote'
