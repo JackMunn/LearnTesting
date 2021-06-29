@@ -33,7 +33,6 @@ workflows:
           store_artifacts: true  
           spec: cypress/integration/E2E/*
           post-steps:
-            - percy/finalize_all
             - store_test_results:
                 path: test-results
             - slack/notify:
@@ -46,6 +45,9 @@ workflows:
                 event: pass
                 template: basic_success_1
                 mentions: '@Jack Munn'   
+      - percy/finalize_all:
+          requires:
+            - Smoke Tests   
 
   Scheduled-Smoke-Tests:
     triggers:
