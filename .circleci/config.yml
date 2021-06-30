@@ -32,6 +32,7 @@ workflows:
           record: true
           store_artifacts: true  
           spec: cypress/integration/E2E/*
+          command-prefix: npx percy exec --
           post-steps:
             - store_test_results:
                 path: test-results
