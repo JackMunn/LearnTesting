@@ -91,6 +91,7 @@ workflows:
           record: true
           store_artifacts: true    
           post-steps:
+            - percy/finalize_all
             - slack/notify:
                 channel: general
                 event: fail
