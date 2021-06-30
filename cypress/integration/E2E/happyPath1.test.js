@@ -17,16 +17,24 @@ describe('Happy Path 1',  () => {
 
         cy.prefillQuickQuoteConfirmation()
         // fills in PreQuote Questions by selecting relationship type and whether there's alternative insurance
+        cy.percySnapshot('Empty PreQuote Questions')
+
         cy.prefillPreQuoteQuestions('Parents', 'Yes')
+        cy.percySnapshot('Filled PreQuote Questions')
 
         cy.get('[formaction="PreQuoteQuestionsContinue"]').click()
+        cy.percySnapshot('Empty Quote Page')
 
         cy.prefillQuote()
+        cy.percySnapshot('Filled Quote Page')
 
         cy.get('button#continueButton').click()
+        cy.percySnapshot('Empty Post Quote Page')
 
 
         cy.prefillPostQuote()
+        cy.percySnapshot('Filled Post Quote Page')
+
 
         // cy.get('[formaction="PostQuoteQuestionsContinue"]').click()
 
