@@ -3,6 +3,9 @@
 
 // command line help -> https://docs.cypress.io/guides/guides/command-line#cypress-run
 
+// TESTS TO ADD!!!
+// if ABI code is above 36
+// 2019, 2020 registrations FD69 ZNX, CF19TKC, BV20RZM, CN69RZC
 
 
 
