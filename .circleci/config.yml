@@ -6,10 +6,14 @@ orbs:
   percy: percy/agent@0.1.3
   
 
+
 workflows:
   version: 2
   commit-workflow:
     jobs:
+      - cypress/install:
+          pre-steps:
+            - run: npm install --save-dev @percy/cli
       - cypress/run:
           name: Smoke Tests
           record: true
