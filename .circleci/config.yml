@@ -5,7 +5,7 @@ workflows:
   Scheduled-Smoke-Tests:
     jobs:
     - cypress/install:
-          pre-steps:
+          post-steps:
             - run: npm install
     - cypress/run:
         name: Scheduled Smoke Tests
