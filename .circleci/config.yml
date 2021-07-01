@@ -4,6 +4,7 @@ workflows:
   version: 2
   Scheduled-Smoke-Tests:
     jobs:
+    - cypress/install
     - cypress/run:
         name: Scheduled Smoke Tests
         record: true
