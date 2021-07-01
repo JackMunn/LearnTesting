@@ -11,17 +11,13 @@ workflows:
   version: 2
   commit-workflow:
     jobs:
-      - cypress/install:
-          pre-steps:
-            - run: npm install --save-dev @percy/cli
       - cypress/run:
           name: Smoke Tests
           record: true
           store_artifacts: true  
           spec: cypress/integration/E2E/*
           command-prefix: npx percy exec --
-          requires:
-            - cypress/install
+          
           post-steps:
             - store_test_results:
                 path: test-results
