@@ -7,6 +7,8 @@ workflows:
     - cypress/install
     - cypress/run:
         name: Scheduled Smoke Tests
+        requires:
+          - cypress/install
         record: true
         store_artifacts: true
         spec: cypress/integration/E2E/*
