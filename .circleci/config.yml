@@ -20,6 +20,8 @@ workflows:
           store_artifacts: true  
           spec: cypress/integration/E2E/*
           command-prefix: npx percy exec --
+          requires:
+            - cypress/install
           post-steps:
             - store_test_results:
                 path: test-results
