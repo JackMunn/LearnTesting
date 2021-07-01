@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "record": "percy exec -- cypress run"
+    "record": "cypress run"
   },
   "repository": {
     "type": "git",
@@ -16,7 +16,6 @@
     "url": "https://github.com/JackMunn/LearnTesting/issues"
   },
   "homepage": "https://github.com/JackMunn/LearnTesting#readme",
-  "description": "",
   "dependencies": {
     "dayjs": "^1.10.5"
   },
@@ -24,5 +23,6 @@
     "@percy/cli": "^1.0.0-beta.58",
     "@percy/cypress": "^3.1.0",
     "cypress": "^7.6.0"
-  }
+  },
+  "description": ""
 }
