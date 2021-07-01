@@ -10,29 +10,29 @@ describe('Happy Path 1',  () => {
         cy.prefillQuickQuoteQuestions('Jack','Munn','jackmunn@gmail.com',Cypress.todaysDate,'ABHKZ660047N99LP','CF64 5RL','11/05/1988','01234567890','CV53JBZ')
         cy.percySnapshot('Filled Quick Quote Page (No Errors)', { widths: [375]})
 
-        //click continue
-        cy.get('[formaction="QuickQuoteQuestionsContinue"]').click()
-        // confirms the info is correct from 'your quote'
-        cy.percySnapshot('Quick Quote Confirmation', { widths: [375]})
+        // //click continue
+        // cy.get('[formaction="QuickQuoteQuestionsContinue"]').click()
+        // // confirms the info is correct from 'your quote'
+        // cy.percySnapshot('Quick Quote Confirmation', { widths: [375]})
 
-        cy.prefillQuickQuoteConfirmation()
-        // fills in PreQuote Questions by selecting relationship type and whether there's alternative insurance
-        cy.percySnapshot('Empty PreQuote Questions', { widths: [375]})
+        // cy.prefillQuickQuoteConfirmation()
+        // // fills in PreQuote Questions by selecting relationship type and whether there's alternative insurance
+        // cy.percySnapshot('Empty PreQuote Questions', { widths: [375]})
 
-        cy.prefillPreQuoteQuestions('Parents', 'Yes')
-        cy.percySnapshot('Filled PreQuote Questions', { widths: [375]})
+        // cy.prefillPreQuoteQuestions('Parents', 'Yes')
+        // cy.percySnapshot('Filled PreQuote Questions', { widths: [375]})
 
-        cy.get('[formaction="PreQuoteQuestionsContinue"]').click()
-        cy.percySnapshot('Empty Quote Page', { widths: [375]})
+        // cy.get('[formaction="PreQuoteQuestionsContinue"]').click()
+        // cy.percySnapshot('Empty Quote Page', { widths: [375]})
 
-        cy.prefillQuote()
-        cy.percySnapshot('Filled Quote Page', { widths: [375]})
+        // cy.prefillQuote()
+        // cy.percySnapshot('Filled Quote Page', { widths: [375]})
 
-        cy.get('button#continueButton').click()
+        // cy.get('button#continueButton').click()
 
 
-        cy.prefillPostQuote()
-        cy.percySnapshot('Filled Post Quote Page', { widths: [375]})
+        // cy.prefillPostQuote()
+        // cy.percySnapshot('Filled Post Quote Page', { widths: [375]})
 
 
         // cy.get('[formaction="PostQuoteQuestionsContinue"]').click()
