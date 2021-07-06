@@ -133,7 +133,7 @@ Cypress.Commands.add('prefillQuickQuoteConfirmation', () => {
 
   describe('Make Stripe Payment', () => {
 
-      cy.wait(6000)
+      cy.wait(15000)
       cy.get('iframe').then($iframe => {
         const doc = $iframe.contents()
         let input = doc.find('input')[0]
