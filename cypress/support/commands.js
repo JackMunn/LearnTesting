@@ -38,6 +38,7 @@ beforeEach(() => {
 
     // checks we're on the home page
     cy.url().should('include','/Public/Index')
+ 
 
     //clicks to open nav bar
     cy.get('[data-target=".navbar-ex1-collapse"]').click()

@@ -1,5 +1,52 @@
 {
-  "name": "Using fixtures to represent data",
-  "email": "hello@cypress.io",
-  "body": "Fixtures are a great way to mock data for responses to routes"
+"statusCode": 200,
+"body": 
+  {
+    "Status": {
+      "Success": true,
+      "ErrorMessage": null,
+      "CreditsRemaining": 3138
+    },
+    "Results": [
+      {
+        "Address": {
+          "Lines": [
+            "Trapp Village Hall",
+            "Trapp",
+            "",
+            "",
+            "LLANDEILO",
+            "Dyfed",
+            "SA19 6TR"
+          ]
+        },
+        "RawAddress": {
+          "Organisation": "TRAPP VILLAGE HALL",
+          "Department": "",
+          "AddressKey": 30316221,
+          "OrganisationKey": 2216446,
+          "PostcodeType": "S",
+          "BuildingNumber": 0,
+          "SubBuildingName": "",
+          "BuildingName": "",
+          "DependentThoroughfareName": "",
+          "DependentThoroughfareDesc": "",
+          "ThoroughfareName": "",
+          "ThoroughfareDesc": "",
+          "DoubleDependentLocality": "",
+          "DependentLocality": "TRAPP",
+          "Locality": "LLANDEILO",
+          "Postcode": "SA196TR",
+          "Dps": "1Q",
+          "PoBox": "",
+          "PostalCounty": "DYFED",
+          "TraditionalCounty": "CARMARTHENSHIRE",
+          "AdministrativeCounty": "CARMARTHENSHIRE",
+          "CountryIso2": null,
+          "UniqueReference": null,
+          "Location": null
+        }
+      }
+    ]
+  }
 }

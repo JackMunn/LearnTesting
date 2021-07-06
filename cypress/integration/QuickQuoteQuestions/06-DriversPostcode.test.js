@@ -104,7 +104,21 @@
         cy.get('[formaction="QuickQuoteQuestionsContinue"]').click()
 
         cy.url().should('include','/Public/CannotQuote')
-
-
     })  
+
+    it.only('#9779 Customer sees an error popup when the postcode lookup service is not available 404', () => {
+        
+        cy.on('window:alert', (alertText) => {
+            expect(alertText).contains('The postcode lookup service is not currently available')
+    })
+        
+        cy.intercept('GET', 'https://veygolearnpublicuat.instanda.com/Public/GetAddressListForPostcode?postcode=SA196TR&questionid=181334', {
+            "statusCode": 408
+        })
+        
+        cy.get('input#Postcode181334').type('SA196TR')
+        cy.get('button[class="instanda-button btn btn-default"]').click()
+        // cy.wait('@AddressLookup')
+
+    })
     })
