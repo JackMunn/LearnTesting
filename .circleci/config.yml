@@ -14,6 +14,8 @@ workflows:
         - store_test_results: {path: test-results}
         - slack/notify: {channel: general, event: fail, template: basic_fail_1, mentions: '@Jack Munn'}
         - slack/notify: {channel: general, event: pass, template: basic_success_1, mentions: '@Jack Munn'}
+        - store_artifacts:
+            path: /happyPath1.test.js
 
 
   Scheduled-Smoke-Tests:
