@@ -20,6 +20,7 @@
     "dayjs": "^1.10.5"
   },
   "devDependencies": {
+    "@neuralegion/cypress-har-generator": "^5.2.3",
     "@percy/cli": "^1.0.0-beta.58",
     "@percy/cypress": "^3.1.0",
     "cypress": "^7.6.0"

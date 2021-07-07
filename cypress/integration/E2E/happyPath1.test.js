@@ -3,8 +3,20 @@
 
 // command line help -> https://docs.cypress.io/guides/guides/command-line#cypress-run
 describe('Happy Path 1',  () => {
+    before(() => {
+        // start recording
+        cy.recordHar();
+      });
+    
+      after(() => {
+        // HAR will be saved as users.spec.har 
+        // at the root of the project 
+        cy.saveHar();
+      });
 
     it('Customer can fill in a basic quote', () => {
+        
+
         //pre-fill a quote
         cy.log('Staring smoke test', { widths: [375]})
         cy.percySnapshot('Empty Quick Quote Page')

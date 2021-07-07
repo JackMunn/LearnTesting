@@ -26,6 +26,7 @@
 
 
 beforeEach(() => {
+
     cy.log('Logging into UAT environment...')
 
     cy.visit('https://veygolearnpublicuat.instanda.com/Public/QuickQuoteQuestions?PackageId=19519&pageNumber=1')
