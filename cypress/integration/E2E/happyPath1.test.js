@@ -5,7 +5,6 @@
 describe('Happy Path 1',  () => {
     it('Customer can fill in a basic quote', () => {
         
-
         //pre-fill a quote
         cy.log('Staring smoke test', { widths: [375]})
         cy.percySnapshot('Empty Quick Quote Page')
