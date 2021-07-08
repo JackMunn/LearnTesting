@@ -8,7 +8,8 @@ workflows:
         name: Commit Smoke Tests
         record: true
         store_artifacts: true
-        command: npx percy exec -- cypress run --headless --spec "cypress/integration/E2E/*"
+        spec: cypress/integration/E2E/*
+        command-prefix: npx percy exec --
         post-steps:
         - store_test_results: {path: test-results}
         - slack/notify: {channel: general, event: fail, template: basic_fail_1, mentions: '@Jack Munn'}
