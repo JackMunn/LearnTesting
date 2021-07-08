@@ -76,11 +76,13 @@ describe('#9274 Please enter the vehicle registration ', () => {
         cy.get('#registration-empty_181362').should('not.have.attr', 'style', 'display:none')
     })
 
-    it('#9286 Error message lookup error appears assuming car lookup is returning 404/503 (stubbed)', () => {
-        cy.intercept('GET', 'https://veygolearnpublicuat.instanda.com/Public/LookupCarDetails?registration=cv53jbz', {
-            statusCode: 404,
-            body: ['VehicleNotFound']
+    it.only('#9286 Error message lookup error appears assuming car lookup is returning 404/503 (stubbed)', () => {
+        
+        cy.fixture('ExperianMock-404').then(json => {
+            cy.intercept('GET', 'https://veygolearnpublicuat.instanda.com/Public/LookupCarDetails?registration=cv53jbz', json)
+                .as('getCarReg')
         })
+
 
         // check that the error element has a css attribute to ensure it displays 
         cy.get('#vehicle-lookup-error_181362').should('have.attr', 'style', 'display:none')
@@ -89,6 +91,13 @@ describe('#9274 Please enter the vehicle registration ', () => {
         cy.get('input#VehicleReg').type('cv53jbz')
         // click search
         cy.get('[class="instanda-buttonList form-group"] > button').click()
+
+        // checking header has a 404 as the statusCode
+        cy.wait('@getCarReg').then(({response}) => {
+            console.log(response)
+            expect(response.statusCode).to.eq(404)
+        })
+
         // error element should not have a css attribute of display:none (e.g. it's now visible)
         cy.get('#vehicle-lookup-error_181362').should('not.have.attr', 'style', 'display:none')
 

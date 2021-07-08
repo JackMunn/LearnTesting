@@ -1,0 +1,5 @@
+{
+  "statusMessage": "Experian Vehicle Desription Check 404 mock",
+  "statusCode": 404,
+  "body": ["VehicleNotFound"]
+}
