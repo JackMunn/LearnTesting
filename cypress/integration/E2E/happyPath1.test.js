@@ -40,9 +40,9 @@ describe('Happy Path 1',  () => {
 
         cy.get('input#boltPayButton').click()
 
-        // cy.addStripeDetails()
+        cy.addStripeDetails()
     
-        // cy.log('Journey completed successfully')
+        cy.log('Journey completed successfully')
 
 
    
