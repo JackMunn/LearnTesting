@@ -10,7 +10,7 @@ workflows:
         store_artifacts: true  
 
         spec: cypress/integration/E2E/*
-        command: npx percy exec -- cypress run --spec "cypress/integration/E2E/*"
+        command: npx cypress run --spec 'cypress/integration/E2E/*' --reporter mochawesome
         post-steps:
         - store_artifacts:
             path: mochawesome-report
@@ -32,8 +32,7 @@ workflows:
             name: Scheduled Smoke Tests
             record: true
             store_artifacts: true  
-            spec: cypress/integration/E2E/*
-            command-prefix: npx percy exec --
+            command: npx cypress run --spec 'cypress/integration/E2E/*' --reporter mochawesome
             post-steps:
               - store_artifacts:
                   path: mochawesome-report
