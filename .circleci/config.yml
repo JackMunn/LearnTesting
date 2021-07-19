@@ -41,7 +41,7 @@ workflows:
                     "type": "section",
                     "text": {
                       "type": "mrkdwn",
-                      "text": "Write some text here $ARTIFACT_RESPONSE"
+                      "text": "Write some text here $ARTIFACT_RESPONSE "
                     }
                   }
                 ]
