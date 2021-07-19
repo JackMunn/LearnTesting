@@ -3,6 +3,7 @@
   "video": true,
   "videoUploadOnPasses": true,
   "projectId": "x2qyww",
-  "reporter": "mochawesome"
+  "reporter": "mochawesome",
+  "overwrite": true
 
 }

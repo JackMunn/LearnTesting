@@ -2,14 +2,14 @@
   "stats": {
     "suites": 1,
     "tests": 1,
-    "passes": 1,
+    "passes": 0,
     "pending": 0,
-    "failures": 0,
-    "start": "2021-07-19T16:39:17.087Z",
-    "end": "2021-07-19T16:40:51.692Z",
-    "duration": 94605,
+    "failures": 1,
+    "start": "2021-07-19T17:44:21.102Z",
+    "end": "2021-07-19T17:46:15.980Z",
+    "duration": 114878,
     "testsRegistered": 1,
-    "passPercent": 100,
+    "passPercent": 0,
     "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
@@ -18,16 +18,16 @@
   },
   "results": [
     {
-      "uuid": "70b0c80d-21cf-4424-a4dc-7a21e4b80162",
+      "uuid": "e3209cd4-a823-4036-9131-6dce5e862fb7",
       "title": "",
-      "fullFile": "cypress/integration/E2E/happyPath2.test.js",
-      "file": "cypress/integration/E2E/happyPath2.test.js",
+      "fullFile": "cypress/integration/E2E/happyPath1.test.js",
+      "file": "cypress/integration/E2E/happyPath1.test.js",
       "beforeHooks": [],
       "afterHooks": [],
       "tests": [],
       "suites": [
         {
-          "uuid": "a0453c55-ae2d-400d-a556-e683747c476d",
+          "uuid": "68d664f5-f152-4a4d-ace6-5978d9d74624",
           "title": "Happy Path 1",
           "fullFile": "",
           "file": "",
@@ -38,29 +38,33 @@
               "title": "Customer can fill in a basic quote",
               "fullTitle": "Happy Path 1 Customer can fill in a basic quote",
               "timedOut": null,
-              "duration": 92801,
-              "state": "passed",
-              "speed": "slow",
-              "pass": true,
-              "fail": false,
+              "duration": 112593,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
               "pending": false,
               "context": null,
-              "code": "//pre-fill a quote\ncy.log('Staring smoke test'); // cy.percySnapshot('Empty Quick Quote Page')\ncy.prefillQuickQuoteQuestions('firstName', 'secondName', 'asdadadasd@gmail.com', Cypress.todaysDate, 'ABHKZ660047N99LP', 'CF64 5RL', '11/05/1950', '01234567890', 'CV53JBZ'); // cy.percySnapshot('Filled Quick Quote Page (No Errors)', { widths: [375]})\n// click continue\ncy.get('[formaction=\"QuickQuoteQuestionsContinue\"]').click(); // confirms the info is correct from 'your quote'\n// cy.percySnapshot('Quick Quote Confirmation', { widths: [375]})\ncy.prefillQuickQuoteConfirmation(); // fills in PreQuote Questions by selecting relationship type and whether there's alternative insurance\n// cy.percySnapshot('Empty PreQuote Questions', { widths: [375]})\ncy.prefillPreQuoteQuestions('Parents', 'Yes'); // cy.percySnapshot('Filled PreQuote Questions', { widths: [375]})\ncy.get('[formaction=\"PreQuoteQuestionsContinue\"]').click(); // cy.percySnapshot('Empty Quote Page', { widths: [375]})\ncy.prefillQuote(); // cy.percySnapshot('Filled Quote Page', { widths: [375]})\ncy.get('button#continueButton').click();\ncy.prefillPostQuote(); // cy.percySnapshot('Filled Post Quote Page', { widths: [375]})\ncy.get('[formaction=\"PostQuoteQuestionsContinue\"]').click();\ncy.get('input#boltPayButton').click();\ncy.addStripeDetails();\ncy.log('Journey completed successfully');",
-              "err": {},
-              "uuid": "736b769d-7bf3-4577-9408-cba2100b8332",
-              "parentUUID": "a0453c55-ae2d-400d-a556-e683747c476d",
+              "code": "//pre-fill a quote\ncy.log('Staring smoke test'); // cy.percySnapshot('Empty Quick Quote Page')\ncy.prefillQuickQuoteQuestions('Jack', 'Munn', 'jackmunn@gmail.com', Cypress.todaysDate, 'ABHKZ660047N99LP', 'CF64 5RL', '11/05/1988', '01234567890', 'CV53JBZ'); // cy.percySnapshot('Filled Quick Quote Page (No Errors)', { widths: [375]})\n// click continue\ncy.get('[formaction=\"QuickQuoteQuestionsContinue\"]').click(); // confirms the info is correct from 'your quote'\n// cy.percySnapshot('Quick Quote Confirmation', { widths: [375]})\ncy.prefillQuickQuoteConfirmation(); // fills in PreQuote Questions by selecting relationship type and whether there's alternative insurance\n// cy.percySnapshot('Empty PreQuote Questions', { widths: [375]})\ncy.prefillPreQuoteQuestions('Parents', 'Yes'); // cy.percySnapshot('Filled PreQuote Questions', { widths: [375]})\ncy.get('[formaction=\"PreQuoteQuestionsContinue\"]').click(); // cy.percySnapshot('Empty Quote Page', { widths: [375]})\ncy.prefillQuote(); // cy.percySnapshot('Filled Quote Page', { widths: [375]})\ncy.get('button#continueButton').click();\ncy.prefillPostQuote(); // cy.percySnapshot('Filled Post Quote Page', { widths: [375]})\ncy.get('[formaction=\"PostQuoteQuestionsContinue\"]').click();\ncy.get('input#boltPayButton').click();\ncy.addStripeDetails();\ncy.log('Journey completed successfully');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: expected 'https://veygolearnpublicuat.instanda.com/PublicBoltPayments/ConfirmBillingDetails?quoteRef=W4StKUi7qzs7KHV2fw9VxgTJ6dKwCwbeqpjYVgtj&packageId=19519' to include '/Public/Confirmation'",
+                "estack": "AssertionError: Timed out retrying after 4000ms: expected 'https://veygolearnpublicuat.instanda.com/PublicBoltPayments/ConfirmBillingDetails?quoteRef=W4StKUi7qzs7KHV2fw9VxgTJ6dKwCwbeqpjYVgtj&packageId=19519' to include '/Public/Confirmation'\n    at Suite.eval (https://veygolearnpublicuat.instanda.com/__cypress/tests?p=cypress/support/index.js:212:14)\n    at Context.eval (https://veygolearnpublicuat.instanda.com/__cypress/tests?p=cypress/support/index.js:198:3)",
+                "diff": null
+              },
+              "uuid": "47cced8b-21e2-4187-afba-630ace1fb641",
+              "parentUUID": "68d664f5-f152-4a4d-ace6-5978d9d74624",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
-          "passes": [
-            "736b769d-7bf3-4577-9408-cba2100b8332"
+          "passes": [],
+          "failures": [
+            "47cced8b-21e2-4187-afba-630ace1fb641"
           ],
-          "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 92801,
+          "duration": 112593,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

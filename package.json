@@ -26,7 +26,6 @@
     "cypress": "^7.6.0",
     "mocha": "^9.0.2",
     "mochawesome": "^6.2.2"
-
   },
   "description": ""
 }
