@@ -5,9 +5,9 @@
     "passes": 0,
     "pending": 0,
     "failures": 1,
-    "start": "2021-07-19T17:44:21.102Z",
-    "end": "2021-07-19T17:46:15.980Z",
-    "duration": 114878,
+    "start": "2021-07-19T17:46:43.561Z",
+    "end": "2021-07-19T17:48:31.171Z",
+    "duration": 107610,
     "testsRegistered": 1,
     "passPercent": 0,
     "pendingPercent": 0,
@@ -18,16 +18,16 @@
   },
   "results": [
     {
-      "uuid": "e3209cd4-a823-4036-9131-6dce5e862fb7",
+      "uuid": "94dceaf6-90db-4846-8dce-cdcc2a7f769e",
       "title": "",
-      "fullFile": "cypress/integration/E2E/happyPath1.test.js",
-      "file": "cypress/integration/E2E/happyPath1.test.js",
+      "fullFile": "cypress/integration/E2E/happyPath2.test.js",
+      "file": "cypress/integration/E2E/happyPath2.test.js",
       "beforeHooks": [],
       "afterHooks": [],
       "tests": [],
       "suites": [
         {
-          "uuid": "68d664f5-f152-4a4d-ace6-5978d9d74624",
+          "uuid": "eb78f9ea-16d6-4188-94ec-d94f3f3830b6",
           "title": "Happy Path 1",
           "fullFile": "",
           "file": "",
@@ -38,21 +38,21 @@
               "title": "Customer can fill in a basic quote",
               "fullTitle": "Happy Path 1 Customer can fill in a basic quote",
               "timedOut": null,
-              "duration": 112593,
+              "duration": 105313,
               "state": "failed",
               "speed": null,
               "pass": false,
               "fail": true,
               "pending": false,
               "context": null,
-              "code": "//pre-fill a quote\ncy.log('Staring smoke test'); // cy.percySnapshot('Empty Quick Quote Page')\ncy.prefillQuickQuoteQuestions('Jack', 'Munn', 'jackmunn@gmail.com', Cypress.todaysDate, 'ABHKZ660047N99LP', 'CF64 5RL', '11/05/1988', '01234567890', 'CV53JBZ'); // cy.percySnapshot('Filled Quick Quote Page (No Errors)', { widths: [375]})\n// click continue\ncy.get('[formaction=\"QuickQuoteQuestionsContinue\"]').click(); // confirms the info is correct from 'your quote'\n// cy.percySnapshot('Quick Quote Confirmation', { widths: [375]})\ncy.prefillQuickQuoteConfirmation(); // fills in PreQuote Questions by selecting relationship type and whether there's alternative insurance\n// cy.percySnapshot('Empty PreQuote Questions', { widths: [375]})\ncy.prefillPreQuoteQuestions('Parents', 'Yes'); // cy.percySnapshot('Filled PreQuote Questions', { widths: [375]})\ncy.get('[formaction=\"PreQuoteQuestionsContinue\"]').click(); // cy.percySnapshot('Empty Quote Page', { widths: [375]})\ncy.prefillQuote(); // cy.percySnapshot('Filled Quote Page', { widths: [375]})\ncy.get('button#continueButton').click();\ncy.prefillPostQuote(); // cy.percySnapshot('Filled Post Quote Page', { widths: [375]})\ncy.get('[formaction=\"PostQuoteQuestionsContinue\"]').click();\ncy.get('input#boltPayButton').click();\ncy.addStripeDetails();\ncy.log('Journey completed successfully');",
+              "code": "//pre-fill a quote\ncy.log('Staring smoke test'); // cy.percySnapshot('Empty Quick Quote Page')\ncy.prefillQuickQuoteQuestions('firstName', 'secondName', 'asdadadasd@gmail.com', Cypress.todaysDate, 'ABHKZ660047N99LP', 'CF64 5RL', '11/05/1950', '01234567890', 'CV53JBZ'); // cy.percySnapshot('Filled Quick Quote Page (No Errors)', { widths: [375]})\n// click continue\ncy.get('[formaction=\"QuickQuoteQuestionsContinue\"]').click(); // confirms the info is correct from 'your quote'\n// cy.percySnapshot('Quick Quote Confirmation', { widths: [375]})\ncy.prefillQuickQuoteConfirmation(); // fills in PreQuote Questions by selecting relationship type and whether there's alternative insurance\n// cy.percySnapshot('Empty PreQuote Questions', { widths: [375]})\ncy.prefillPreQuoteQuestions('Parents', 'Yes'); // cy.percySnapshot('Filled PreQuote Questions', { widths: [375]})\ncy.get('[formaction=\"PreQuoteQuestionsContinue\"]').click(); // cy.percySnapshot('Empty Quote Page', { widths: [375]})\ncy.prefillQuote(); // cy.percySnapshot('Filled Quote Page', { widths: [375]})\ncy.get('button#continueButton').click();\ncy.prefillPostQuote(); // cy.percySnapshot('Filled Post Quote Page', { widths: [375]})\ncy.get('[formaction=\"PostQuoteQuestionsContinue\"]').click();\ncy.get('input#boltPayButton').click();\ncy.addStripeDetails();\ncy.log('Journey completed successfully');",
               "err": {
-                "message": "AssertionError: Timed out retrying after 4000ms: expected 'https://veygolearnpublicuat.instanda.com/PublicBoltPayments/ConfirmBillingDetails?quoteRef=W4StKUi7qzs7KHV2fw9VxgTJ6dKwCwbeqpjYVgtj&packageId=19519' to include '/Public/Confirmation'",
-                "estack": "AssertionError: Timed out retrying after 4000ms: expected 'https://veygolearnpublicuat.instanda.com/PublicBoltPayments/ConfirmBillingDetails?quoteRef=W4StKUi7qzs7KHV2fw9VxgTJ6dKwCwbeqpjYVgtj&packageId=19519' to include '/Public/Confirmation'\n    at Suite.eval (https://veygolearnpublicuat.instanda.com/__cypress/tests?p=cypress/support/index.js:212:14)\n    at Context.eval (https://veygolearnpublicuat.instanda.com/__cypress/tests?p=cypress/support/index.js:198:3)",
+                "message": "AssertionError: Timed out retrying after 4000ms: expected 'https://veygolearnpublicuat.instanda.com/PublicBoltPayments/ConfirmBillingDetails?quoteRef=wgnJugXb2JMcayYMEeQu6Fk9Z5i6TWFDJ5SD4sE5&packageId=19519' to include '/Public/Confirmation'",
+                "estack": "AssertionError: Timed out retrying after 4000ms: expected 'https://veygolearnpublicuat.instanda.com/PublicBoltPayments/ConfirmBillingDetails?quoteRef=wgnJugXb2JMcayYMEeQu6Fk9Z5i6TWFDJ5SD4sE5&packageId=19519' to include '/Public/Confirmation'\n    at Suite.eval (https://veygolearnpublicuat.instanda.com/__cypress/tests?p=cypress/support/index.js:212:14)\n    at Context.eval (https://veygolearnpublicuat.instanda.com/__cypress/tests?p=cypress/support/index.js:198:3)",
                 "diff": null
               },
-              "uuid": "47cced8b-21e2-4187-afba-630ace1fb641",
-              "parentUUID": "68d664f5-f152-4a4d-ace6-5978d9d74624",
+              "uuid": "04e1f37f-2694-42d7-966b-e1e82fc388fa",
+              "parentUUID": "eb78f9ea-16d6-4188-94ec-d94f3f3830b6",
               "isHook": false,
               "skipped": false
             }
@@ -60,11 +60,11 @@
           "suites": [],
           "passes": [],
           "failures": [
-            "47cced8b-21e2-4187-afba-630ace1fb641"
+            "04e1f37f-2694-42d7-966b-e1e82fc388fa"
           ],
           "pending": [],
           "skipped": [],
-          "duration": 112593,
+          "duration": 105313,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

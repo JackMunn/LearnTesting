@@ -4,6 +4,9 @@
   "videoUploadOnPasses": true,
   "projectId": "x2qyww",
   "reporter": "mochawesome",
-  "overwrite": true
+  "overwrite": true,
+  "reporterOptions": {
+    "mochaFile": "results/my-test-output-[hash].xml"
+  }
 
 }

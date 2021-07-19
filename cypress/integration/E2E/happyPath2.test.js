@@ -2,7 +2,7 @@
 /// <reference types="cypress" />  
 
 // command line help -> https://docs.cypress.io/guides/guides/command-line#cypress-run
-describe('Happy Path 1',  () => {
+describe('Happy Path 2',  () => {
     it('Customer can fill in a basic quote', () => {
         
         //pre-fill a quote
