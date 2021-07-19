@@ -31,9 +31,22 @@ workflows:
               {
                 "blocks": [
                   {
-                    "type": "image",
-                    "image_url": "$ARTIFACT_RESPONSE",
-                    "alt_text": "inspiration"
+                    "type": "section",
+                    "text": {
+                      "type": "mrkdwn",
+                      "text": "Build failed."
+                    },
+                    "accessory": {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "Click Me",
+                        "emoji": true
+                      },
+                      "value": "click_me_123",
+                      "url": "$ARTIFACT_RESPONSE",
+                      "action_id": "button-action"
+                    }
                   }
                 ]
               }
