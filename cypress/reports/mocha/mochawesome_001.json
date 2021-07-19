@@ -1,0 +1,111 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2021-07-19T20:07:57.010Z",
+    "end": "2021-07-19T20:08:26.848Z",
+    "duration": 29838,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "40c43bbb-d1bd-40d9-8aae-ac4eca5f1980",
+      "title": "",
+      "fullFile": "cypress/integration/E2E/happyPath2.test.js",
+      "file": "cypress/integration/E2E/happyPath2.test.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "84f2b152-61a7-468d-a962-0e1bc294603c",
+          "title": "Happy Path 2",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Customer can fill in a basic quote",
+              "fullTitle": "Happy Path 2 Customer can fill in a basic quote",
+              "timedOut": null,
+              "duration": 28027,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "//pre-fill a quote\ncy.log('Staring smoke test'); // cy.percySnapshot('Empty Quick Quote Page')\ncy.prefillQuickQuoteQuestions('firstName', 'secondName', 'asdadadasd@gmail.com', Cypress.todaysDate, 'ABHKZ660047N99LP', 'CF64 5RL', '11/05/1950', '01234567890', 'CV53JBZ'); // cy.percySnapshot('Filled Quick Quote Page (No Errors)', { widths: [375]})\n// click continue\ncy.get('[formaction=\"QuickQuoteQuestionsContinue\"]').click(); // confirms the info is correct from 'your quote'\n// cy.percySnapshot('Quick Quote Confirmation', { widths: [375]})\ncy.prefillQuickQuoteConfirmation(); // fills in PreQuote Questions by selecting relationship type and whether there's alternative insurance\n// cy.percySnapshot('Empty PreQuote Questions', { widths: [375]})\ncy.prefillPreQuoteQuestions('Parents', 'Yes'); // cy.percySnapshot('Filled PreQuote Questions', { widths: [375]})\ncy.get('[formaction=\"PreQuoteQuestionsContinue\"]').click(); // cy.percySnapshot('Empty Quote Page', { widths: [375]})\ncy.prefillQuote(); // cy.percySnapshot('Filled Quote Page', { widths: [375]})\ncy.get('button#continueButton').click();\ncy.prefillPostQuote(); // cy.percySnapshot('Filled Post Quote Page', { widths: [375]})\ncy.get('[formaction=\"PostQuoteQuestionsContinue\"]').click();\ncy.get('input#boltPayButton').click();\ncy.addStripeDetails();\ncy.log('Journey completed successfully');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find content: 'Confirm all the info above is correct' but never did.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find content: 'Confirm all the info above is correct' but never did.\n    at Context.eval (https://veygolearnpublicuat.instanda.com/__cypress/tests?p=cypress/support/index.js:172:6)",
+                "diff": null
+              },
+              "uuid": "cd4fcc2e-d922-4c60-a552-98a967c683e7",
+              "parentUUID": "84f2b152-61a7-468d-a962-0e1bc294603c",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "cd4fcc2e-d922-4c60-a552-98a967c683e7"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 28027,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.2"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "5.2.0"
+    }
+  }
+}

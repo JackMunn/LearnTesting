@@ -3,10 +3,17 @@
   "video": true,
   "videoUploadOnPasses": true,
   "projectId": "x2qyww",
-  "reporter": "mochawesome",
-  "overwrite": true,
-  "reporterOptions": {
-    "mochaFile": "results/my-test-output-[hash].xml"
-  }
 
+  "reporter": "cypress-multi-reporters",
+    "reporterOptions": {
+        "reporterEnabled": "mochawesome",
+        "overwrite": false,
+        "mochawesomeReporterOptions": {
+            "reportDir": "cypress/reports/mocha",
+            "quite": true,
+            "overwrite": false,
+            "html": true,
+            "json": true
+        }
+    }
 }
