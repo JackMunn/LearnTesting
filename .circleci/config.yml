@@ -44,7 +44,7 @@ workflows:
                         "emoji": true
                       },
                       "value": "click_me_123",
-                      "url": "$ARTIFACT_RESPONSE",
+                      "url": "www.google.com",
                       "action_id": "button-action"
                     }
                   }
