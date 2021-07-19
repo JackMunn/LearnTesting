@@ -25,6 +25,7 @@ workflows:
               -u "$CIRCLE_API_TOKEN:")
               echo "export ARTIFACT_RESPONSE=$artifacts" >> $BASH_ENV
         - slack/notify:
+            channel: general
             event: always
             custom: |
               {
