@@ -7,6 +7,8 @@ workflows:
     - cypress/run:
         name: Commit Smoke Tests
         record: true
+        store_artifacts: true  
+
         spec: cypress/integration/E2E/*
         command: npx percy exec -- cypress run --spec "cypress/integration/E2E/*"
         post-steps:
