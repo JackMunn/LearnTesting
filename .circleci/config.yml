@@ -25,10 +25,26 @@ workflows:
               -u "$CIRCLE_API_TOKEN:")
               echo "export ARTIFACT_RESPONSE=$artifacts" >> $BASH_ENV
         - slack/notify:
-                  channel: general
-                  event: fail
-                  template: basic_fail_1
-                  mentions: '@Jack Munn'    
+            event: always
+            custom: |
+              {
+                "blocks": [
+                  {
+                    "type": "section",
+                    "text": {
+                      "type": "mrkdwn",
+                      "text": "Current Job: $CIRCLE_JOB"
+                    }
+                  },
+                  {
+                    "type": "section",
+                    "text": {
+                      "type": "mrkdwn",
+                      "text": "Write some text here $ARTIFACT_RESPONSE"
+                    }
+                  }
+                ]
+                }
         - slack/notify: {channel: general, event: pass, template: basic_success_1, mentions: '@Jack Munn'}
 
 
