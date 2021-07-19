@@ -34,18 +34,16 @@ workflows:
                     "type": "section",
                     "text": {
                       "type": "mrkdwn",
-                      "text": "Current Job: $CIRCLE_JOB"
-                    }
-                  },
-                  {
-                    "type": "section",
-                    "text": {
-                      "type": "mrkdwn",
-                      "text": "$ARTIFACT_RESPONSE" 
+                      "text": "This is a section block with an accessory image."
+                    },
+                    "accessory": {
+                      "type": "image",
+                      "image_url": "$ARTIFACT_RESPONSE",
+                      "alt_text": "cute cat"
                     }
                   }
                 ]
-                }
+              }     
         - slack/notify: {channel: general, event: pass, template: basic_success_1, mentions: '@Jack Munn'}
 
 
