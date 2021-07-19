@@ -34,22 +34,18 @@ workflows:
                     "type": "section",
                     "text": {
                       "type": "mrkdwn",
-                      "text": "Build failed."
-                    },
-                    "accessory": {
-                      "type": "button",
-                      "text": {
-                        "type": "plain_text",
-                        "text": "Click Me",
-                        "emoji": true
-                      },
-                      "value": "click_me_123",
-                      "url": "www.google.com",
-                      "action_id": "button-action"
+                      "text": "Current Job: $CIRCLE_JOB"
+                    }
+                  },
+                  {
+                    "type": "section",
+                    "text": {
+                      "type": "mrkdwn",
+                      "text": "Write some text here $ARTIFACT_RESPONSE "
                     }
                   }
                 ]
-              }
+                }
         - slack/notify: {channel: general, event: pass, template: basic_success_1, mentions: '@Jack Munn'}
 
 
