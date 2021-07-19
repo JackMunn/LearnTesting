@@ -2,5 +2,7 @@
   "chromeWebSecurity": false,
   "video": true,
   "videoUploadOnPasses": true,
-  "projectId": "x2qyww"
+  "projectId": "x2qyww",
+  "reporter": "mochawesome"
+
 }

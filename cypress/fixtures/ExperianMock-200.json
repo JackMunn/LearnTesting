@@ -1,0 +1,11 @@
+{
+    "statusCode": 200,
+    "body":
+    {
+        "Colour": "BLUE",
+        "Make": "VOLKSWAGEN",
+        "Model": "POLO SE",
+        "YearOfManufacture": "2003",
+        "ABIGroup": "53526003"
+    }
+}
