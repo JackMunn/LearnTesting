@@ -30,13 +30,21 @@ workflows:
                 "blocks": [
                   {
                     "type": "section",
-                    "fields": [
-                      {
+                    "text": {
+                      "type": "mrkdwn",
+                      "text": "This is a section block with a button."
+                    },
+                    "accessory": {
+                      "type": "button",
+                      "text": {
                         "type": "plain_text",
-                        "text": "*This is a text notification* $ARTIFACT_RESPONSE",
+                        "text": "Click Me",
                         "emoji": true
-                      }
-                    ]
+                      },
+                      "value": "click_me_123",
+                      "url": $ARTIFACT_RESPONSE,
+                      "action_id": "button-action"
+                    }
                   }
                 ]
               }
