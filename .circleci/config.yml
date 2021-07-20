@@ -26,7 +26,7 @@ workflows:
               echo "export ARTIFACT_RESPONSE=$artifacts" >> $BASH_ENV
         - slack/notify:
             channel: general
-            event: always
+            event: fail
             custom: |
               {
                 "blocks": [
@@ -38,7 +38,7 @@ workflows:
                     },
                     "accessory": {
                       "type": "image",
-                      "image_url": "$ARTIFACT_RESPONSE",
+                      "image_url": " $ARTIFACT_RESPONSE ",
                       "alt_text": "cute cat"
                     }
                   }
@@ -65,15 +65,34 @@ workflows:
             command: npx cypress run --spec 'cypress/integration/E2E/*' --reporter mochawesome
             post-steps:
               - store_artifacts:
-                  path: mochawesome-report
+                  path: cypress/reports/mochareports
+              - run:
+                  name: Get artifacts
+                  when: on_fail
+                  command: |
+                    artifacts=$(curl -X GET "https://circleci.com/api/v2/project/github/JackMunn/LearnTesting/$CIRCLE_BUILD_NUM/artifacts" \
+                    -H "Accept: application/json" \
+                    -u "$CIRCLE_API_TOKEN:")
+                    echo "export ARTIFACT_RESPONSE=$artifacts" >> $BASH_ENV
               - slack/notify:
                   channel: general
                   event: fail
-                  template: basic_fail_1
-                  mentions: '@Jack Munn'
-              - slack/notify:
-                  channel: general
-                  event: pass
-                  template: basic_success_1
-                  mentions: '@Jack Munn'  
+                  custom: |
+                    {
+                      "blocks": [
+                        {
+                          "type": "section",
+                          "text": {
+                            "type": "mrkdwn",
+                            "text": "This is a section block with an accessory image."
+                          },
+                          "accessory": {
+                            "type": "image",
+                            "image_url": " $ARTIFACT_RESPONSE ",
+                            "alt_text": "cute cat"
+                          }
+                        }
+                      ]
+                    }     
+              - slack/notify: {channel: general, event: pass, template: basic_success_1, mentions: '@Jack Munn'}
    
