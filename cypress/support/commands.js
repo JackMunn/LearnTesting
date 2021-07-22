@@ -68,7 +68,7 @@ Cypress.Commands.add('prefillQuickQuoteQuestions', (firstName,surname,email,star
 
         //enters postcode and selects address
         cy.get('input#Postcode181334').type(postcode)
-        cy.get('button[class="instanda-button btn btn-default"]').click()
+        cy.get('#Lookup181334 > .instanda-button').click({force:true})
         // clicks first returned address in list
         cy.get('div[class="postcodelookup"] > button').first().click()
 
