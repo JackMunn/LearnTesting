@@ -38,12 +38,30 @@ workflows:
                     },
                     "accessory": {
                       "type": "image",
-                      "image_url": " $ARTIFACT_RESPONSE ",
+                      "image_url": "$ARTIFACT_RESPONSE",
                       "alt_text": "cute cat"
+                    }
+                  },
+                  {
+                    "type": "section",
+                    "text": {
+                      "type": "mrkdwn",
+                      "text": "To see the job, click https://circleci.com/api/v2/project/github/JackMunn/LearnTesting/$CIRCLE_BUILD_NUM."
+                    },
+                    "accessory": {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "Click Me",
+                        "emoji": true
+                      },
+                      "value": "click_me_123",
+                      "url": "$ARTIFACT_RESPONSE",
+                      "action_id": "button-action"
                     }
                   }
                 ]
-              }     
+              }   
         - slack/notify: {channel: general, event: pass, template: basic_success_1, mentions: '@Jack Munn'}
 
 
