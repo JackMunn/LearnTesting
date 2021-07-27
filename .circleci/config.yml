@@ -1,21 +1,16 @@
 version: 2.1
 orbs: {node: circleci/node@4.5.1, cypress: cypress-io/cypress@1.28.0, slack: circleci/slack@4.4.2, percy: percy/agent@0.1.3}
-
-
 workflows:
   version: 2
-  Commit-workflow:
+  Scheduled-Smoke-Tests:
     jobs:
     - cypress/run:
-        name: Commit Smoke Tests
+        name: Scheduled Smoke Tests
         record: true
-        store_artifacts: true  
-
-        spec: cypress/integration/E2E/*
+        store_artifacts: true
         command: npx cypress run --spec 'cypress/integration/E2E/*' --reporter mochawesome
         post-steps:
-        - store_artifacts:
-            path: cypress/reports/mochareports
+        - store_artifacts: {path: cypress/reports/mochareports}
         - run:
             name: Get artifacts
             when: on_fail
@@ -27,90 +22,5 @@ workflows:
         - slack/notify:
             channel: general
             event: fail
-            custom: |
-              {
-                "blocks": [
-                  {
-                    "type": "section",
-                    "text": {
-                      "type": "mrkdwn",
-                      "text": "This is a section block with an accessory image."
-                    },
-                    "accessory": {
-                      "type": "image",
-                      "image_url": "$ARTIFACT_RESPONSE",
-                      "alt_text": "cute cat"
-                    }
-                  },
-                  {
-                    "type": "section",
-                    "text": {
-                      "type": "mrkdwn",
-                      "text": "To see the job, click https://circleci.com/api/v2/project/github/JackMunn/LearnTesting/$CIRCLE_BUILD_NUM."
-                    },
-                    "accessory": {
-                      "type": "button",
-                      "text": {
-                        "type": "plain_text",
-                        "text": "Click Me",
-                        "emoji": true
-                      },
-                      "value": "click_me_123",
-                      "url": "$ARTIFACT_RESPONSE",
-                      "action_id": "button-action"
-                    }
-                  }
-                ]
-              }   
+            custom: "{\n  \"blocks\": [\n    {\n      \"type\": \"section\",\n      \"text\": {\n        \"type\": \"mrkdwn\",\n        \"text\": \"This is a section block with an accessory image.\"\n      },\n      \"accessory\": {\n        \"type\": \"image\",\n        \"image_url\": \" $ARTIFACT_RESPONSE \",\n        \"alt_text\": \"cute cat\"\n      }\n    }\n  ]\n}     \n"
         - slack/notify: {channel: general, event: pass, template: basic_success_1, mentions: '@Jack Munn'}
-
-
-
-
-  Scheduled-Smoke-Tests:
-      triggers:
-        - schedule:
-            cron: "0 7,8,9,11,13,15,17 * * 1,2,3,4,5"
-            filters:
-              branches:
-                only:
-                  - main
-      jobs:
-        - cypress/run:
-            name: Scheduled Smoke Tests
-            record: true
-            store_artifacts: true  
-            command: npx cypress run --spec 'cypress/integration/E2E/*' --reporter mochawesome
-            post-steps:
-              - store_artifacts:
-                  path: cypress/reports/mochareports
-              - run:
-                  name: Get artifacts
-                  when: on_fail
-                  command: |
-                    artifacts=$(curl -X GET "https://circleci.com/api/v2/project/github/JackMunn/LearnTesting/$CIRCLE_BUILD_NUM/artifacts" \
-                    -H "Accept: application/json" \
-                    -u "$CIRCLE_API_TOKEN:")
-                    echo "export ARTIFACT_RESPONSE=$artifacts" >> $BASH_ENV
-              - slack/notify:
-                  channel: general
-                  event: fail
-                  custom: |
-                    {
-                      "blocks": [
-                        {
-                          "type": "section",
-                          "text": {
-                            "type": "mrkdwn",
-                            "text": "This is a section block with an accessory image."
-                          },
-                          "accessory": {
-                            "type": "image",
-                            "image_url": " $ARTIFACT_RESPONSE ",
-                            "alt_text": "cute cat"
-                          }
-                        }
-                      ]
-                    }     
-              - slack/notify: {channel: general, event: pass, template: basic_success_1, mentions: '@Jack Munn'}
-   
