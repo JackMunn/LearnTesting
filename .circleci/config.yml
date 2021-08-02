@@ -1,7 +1,5 @@
 version: 2.1
 orbs: {node: circleci/node@4.5.1, cypress: cypress-io/cypress@1.28.0, slack: circleci/slack@4.4.2, percy: percy/agent@0.1.3}
-
-
 workflows:
   version: 2
   Commit-workflow:
@@ -9,43 +7,13 @@ workflows:
     - cypress/run:
         name: Commit Smoke Tests
         record: true
-        store_artifacts: true  
-
         spec: cypress/integration/E2E/*
-        command: npx cypress run --spec 'cypress/integration/E2E/*' --reporter mochawesome
+        command: npx percy exec -- cypress run --spec "cypress/integration/E2E/*"
         post-steps:
         - store_artifacts:
-            path: cypress/reports/mochareports
-        - run:
-            name: Get artifacts
-            when: on_fail
-            command: |
-              artifacts=$(curl -X GET "https://circleci.com/api/v2/project/github/JackMunn/LearnTesting/$CIRCLE_BUILD_NUM/artifacts" \
-              -H "Accept: application/json" \
-              -u "$CIRCLE_API_TOKEN:")
-              echo "export ARTIFACT_RESPONSE=$artifacts" >> $BASH_ENV
-        - slack/notify:
-            channel: general
-            event: fail
-            custom: |
-              {
-                "blocks": [
-                  {
-                    "type": "section",
-                    "text": {
-                      "type": "mrkdwn",
-                      "text": "This is a section block with an accessory image."
-                    },
-                    "accessory": {
-                      "type": "image",
-                      "image_url": " $ARTIFACT_RESPONSE ",
-                      "alt_text": "cute cat"
-                    }
-                  }
-                ]
-              }     
+            path: mochawesome-report
+        - slack/notify: {channel: general, event: fail, template: basic_fail_1, mentions: '@Jack Munn'}
         - slack/notify: {channel: general, event: pass, template: basic_success_1, mentions: '@Jack Munn'}
-
 
 
 
@@ -62,37 +30,19 @@ workflows:
             name: Scheduled Smoke Tests
             record: true
             store_artifacts: true  
-            command: npx cypress run --spec 'cypress/integration/E2E/*' --reporter mochawesome
+            spec: cypress/integration/E2E/*
+            command-prefix: npx percy exec --
             post-steps:
               - store_artifacts:
-                  path: cypress/reports/mochareports
-              - run:
-                  name: Get artifacts
-                  when: on_fail
-                  command: |
-                    artifacts=$(curl -X GET "https://circleci.com/api/v2/project/github/JackMunn/LearnTesting/$CIRCLE_BUILD_NUM/artifacts" \
-                    -H "Accept: application/json" \
-                    -u "$CIRCLE_API_TOKEN:")
-                    echo "export ARTIFACT_RESPONSE=$artifacts" >> $BASH_ENV
+                  path: mochawesome-report
               - slack/notify:
                   channel: general
                   event: fail
-                  custom: |
-                    {
-                      "blocks": [
-                        {
-                          "type": "section",
-                          "text": {
-                            "type": "mrkdwn",
-                            "text": "This is a section block with an accessory image."
-                          },
-                          "accessory": {
-                            "type": "image",
-                            "image_url": " $ARTIFACT_RESPONSE ",
-                            "alt_text": "cute cat"
-                          }
-                        }
-                      ]
-                    }     
-              - slack/notify: {channel: general, event: pass, template: basic_success_1, mentions: '@Jack Munn'}
+                  template: basic_fail_1
+                  mentions: '@Jack Munn'
+              - slack/notify:
+                  channel: general
+                  event: pass
+                  template: basic_success_1
+                  mentions: '@Jack Munn'  
    
