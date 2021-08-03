@@ -32,6 +32,8 @@ beforeEach(() => {
     cy.visit('https://veygolearnpublicuat.instanda.com/Public/QuickQuoteQuestions?PackageId=19519&pageNumber=1')
     cy.viewport("iphone-8")
 
+    // accept cookies
+    cy.get('#cky-btn-accept').click()
     // types in password field
     cy.get('input#publicUatPassword').type('f"Xvz"JfP2hLqPe{')
     //clicks signin
