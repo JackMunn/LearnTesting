@@ -8,7 +8,7 @@ describe('Happy Path 1',  () => {
         //pre-fill a quote
         cy.log('Staring smoke test')
         // cy.percySnapshot('Empty Quick Quote Page')
-        cy.prefillQuickQuoteQuestions('Jack','Munn','jackmunn@gmail.com',Cypress.todaysDate,'ABHKZ660047N99LP','CF64 5RL','11/05/1988','01234567890','CV53JBZ')
+        cy.prefillQuickQuoteQuestions('Jack','Munn',`jackmunn+${new Date().getDay().toString() + - + new Date().getMonth().toString()}@gmail.com`,Cypress.todaysDate,'ABHKZ660047N99LP','CF64 5RL','11/05/1988','01234567890','CV53JBZ')
         // cy.percySnapshot('Filled Quick Quote Page (No Errors)', { widths: [375]})
 
         // click continue
