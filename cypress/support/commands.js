@@ -139,30 +139,39 @@ Cypress.Commands.add('prefillQuickQuoteConfirmation', () => {
       cy.wait(15000)
       cy.get('iframe').then($iframe => {
         const doc = $iframe.contents()
-        let input = doc.find('input')[0]
-        cy
-          .wrap(input)
-          .type('4242')
-          .type('4242')
-          .type('4242')
-          .type('4242')
-        input = doc.find('input')[1]
-        cy
-          .wrap(input)
-          .clear()
-          .type('12')
-          .type('22')
-        input = doc.find('input')[2]
-        cy
-          .wrap(input)
-          .type('123')
-          .type('{enter}')
+        cy.wrap(doc.find('#cardNumber')).type('4242424242424242')
+        cy.wrap(doc.find('#expiryDate')).type('0122')
+        cy.wrap(doc.find('#cvc')).type('123').type('{enter}').wait(3000)
+        cy.wrap(doc.find('button')[1]).click()
 
-          let button = doc.find('button')[1]
+        // cy.wrap(doc.find('process payment')).click()
 
-          cy
-            .wrap(button).click()
-            // .type('{enter}')
+
+
+        // let input = doc.find('input')[0]
+        // cy
+        //   .wrap(input)
+        //   .type('4242', {force: true})
+        //   .type('4242')
+        //   .type('4242')
+        //   .type('4242')
+        // input = doc.find('input')[1]
+        // cy
+        //   .wrap(input)
+        //   .clear()
+        //   .type('12')
+        //   .type('22')
+        // input = doc.find('input')[2]
+        // cy
+        //   .wrap(input)
+        //   .type('123')
+        //   .type('{enter}')
+
+          // let button = doc.find('button')[1]
+
+          // cy
+          //   .wrap(button).click()
+          //   // .type('{enter}')
 
       })
       cy.wait(15000)
