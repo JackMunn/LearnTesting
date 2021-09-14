@@ -56,6 +56,14 @@ beforeEach(() => {
 
 Cypress.Commands.add('prefillQuickQuoteQuestions', (firstName,surname,email,startDate,dln,postcode,dob,phoneNumber,carReg) => {
  //types first name in
+        cy.document().then( document => {
+          // enables the first name, surname, and email input fields so they can be written to
+          console.log(document.querySelector(`input[name="DriverFirstName_TXT"]`).removeAttribute("readonly"));
+          console.log(document.querySelector(`input[name="DriverLastName_TXT"]`).removeAttribute("readonly"));
+          console.log(document.querySelector(`input[name="EmailAddress_TXT"]`).removeAttribute("readonly"));
+
+
+        })
         cy.get('input#DriverFirstName_TXT').type(firstName)
         // types last name ins
         cy.get('input#DriverLastName_TXT').type(surname)
