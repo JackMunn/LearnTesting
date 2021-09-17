@@ -182,7 +182,7 @@ Cypress.Commands.add('prefillQuickQuoteConfirmation', () => {
           //   // .type('{enter}')
 
       })
-      cy.wait(15000)
+      cy.wait(30000)
       cy.url().should('include','/Public/Confirmation')
 
   })
